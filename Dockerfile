@@ -5,4 +5,4 @@ FROM debian
 COPY filters.sh /filters.sh
 RUN apt-get update && apt-get install -y curl && apt-get install -y git
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/filters.sh"]
+ENTRYPOINT ["bash filters.sh"]
