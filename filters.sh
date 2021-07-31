@@ -1,7 +1,7 @@
 #!/bin/bash
-cd /
 git clone https://github.com/minoplhy/filters-maker /filters-maker
 git clone https://x-access-token:$API_TOKEN_GITHUB@github.com/$Destination_REPO.git /$Destination_NAME
+cd /
 filters-maker/crawler.py filters-maker/input/domains.txt
 filters-maker/maker-rpz.py filtes-maker/input/domains.txt $Destination_REPO/$Destination_VERSION/rpz.txt
 cd $Destination_REPO
