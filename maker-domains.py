@@ -15,6 +15,8 @@ def linecounter():
             pass
     return i + 1
 
+ankstanop = linecounter()
+
 def domainsbuilding():
     with open(excluded ,'r') as f:
         exclude = f.read().split()
@@ -24,7 +26,7 @@ def domainsbuilding():
         f.write('# Title : Minoplhy Personal Blocklist\n')
         f.write('# Description : My Very Personal DNS Blocklist plus crawling from the source\n')
         f.write('# Source : Resources/Source.txt\n')
-        f.write('# Rule Counter : ' + str(linecounter()) +' Rules\n')
+        f.write('# Rule Counter : ' + str(ankstanop) +' Rules\n')
         f.write('# Format : Domains\n')
         f.write('# Licenses : MIT\n')
         f.write('# Compiled Date : ' + str(date) +'\n\n')
