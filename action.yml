@@ -25,13 +25,12 @@ inputs:
     required: true
     
 runs:
-  steps:
-    - run: ${{ github.action_path }}/filters.sh
-      shell: bash
-    args:
-      - ${{ inputs.Destination_NAME }}
-      - ${{ inputs.Destination_REPO }}
-      - ${{ inputs.Destination_VERSION }}
-      - ${{ inputs.GIT_NAME }}
-      - ${{ inputs.GIT_EMAIL }}
-      - ${{ inputs.REPO_BRANCH }}
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.Destination_NAME }}
+    - ${{ inputs.Destination_REPO }}
+    - ${{ inputs.Destination_VERSION }}
+    - ${{ inputs.GIT_NAME }}
+    - ${{ inputs.GIT_EMAIL }}
+    - ${{ inputs.REPO_BRANCH }}
