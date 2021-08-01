@@ -14,6 +14,9 @@ inputs:
   Destination_REPO:
     description: "repo name"
     required: true
+  Destination_FOLDER:
+    description: "folder"
+    required: true
   Destination_VERSION:
     description: "version"
     required: true
@@ -34,6 +37,7 @@ runs:
     - ${{ inputs.Destination_NAME }}
     - ${{ inputs.Destination_UNAME }}
     - ${{ inputs.Destination_REPO }}
+    - ${{ inputs.Destination_FOLDER }}
     - ${{ inputs.Destination_VERSION }}
     - ${{ inputs.GIT_NAME }}
     - ${{ inputs.GIT_EMAIL }}
