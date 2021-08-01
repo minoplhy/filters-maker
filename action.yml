@@ -28,7 +28,7 @@ runs:
   steps:
     - run: ${{ github.action_path }}/filters.sh
       shell: bash
-      args:
+    args:
       - ${{ inputs.Destination_NAME }}
       - ${{ inputs.Destination_REPO }}
       - ${{ inputs.Destination_VERSION }}
