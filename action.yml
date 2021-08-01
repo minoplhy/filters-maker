@@ -8,6 +8,9 @@ inputs:
   Destination_NAME:
     description: "destination's name of repo"
     required: true
+  Destination_UNAME:
+    description: "Idk"
+    required: true
   Destination_REPO:
     description: "repo name"
     required: true
@@ -29,6 +32,7 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.Destination_NAME }}
+    - ${{ inputs.Destination_UNAME }}
     - ${{ inputs.Destination_REPO }}
     - ${{ inputs.Destination_VERSION }}
     - ${{ inputs.GIT_NAME }}
