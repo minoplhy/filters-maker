@@ -4,7 +4,7 @@ git clone https://x-access-token:$API_TOKEN_GITHUB@github.com/$INPUT_DESTINATION
 mkdir /repros/Private-Build/$INPUT_DESTINATION_VERSION
 pip3 install -r /filters-maker/requirements.txt
 python3 /filters-maker/crawler.py /filters-maker/input/domains.txt
-python3 /filters-maker/maker-rpz.py /filtes-maker/input/domains.txt /repros/Private-Build/$INPUT_DESTINATION_VERSION/rpz.txt
+python3 /filters-maker/maker-rpz.py /filters-maker/input/excluded.txt /filtes-maker/input/domains.txt /repros/Private-Build/$INPUT_DESTINATION_VERSION/rpz.txt
 cd /repros
 git config --local user.name $INPUT_GIT_NAME
 git config --local user.email $INPUT_GIT_EMAIL
