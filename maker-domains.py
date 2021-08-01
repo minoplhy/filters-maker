@@ -23,7 +23,7 @@ def domainsbuilding():
     with open(input ,'w') as f:
         f.write('# Title : Minoplhy Personal Blocklist\n')
         f.write('# Description : My Very Personal DNS Blocklist plus crawling from the source\n')
-        f.write('# Source : Source.txt\n')
+        f.write('# Source : Resources/Source.txt\n')
         f.write('# Rule Counter : ' + str(linecounter()) +' Rules\n')
         f.write('# Format : Domains\n')
         f.write('# Licenses : MIT\n')
