@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/filters-maker')
+sys.path.append('/filters-maker')
 
 import crawler
 import maker_rpz
