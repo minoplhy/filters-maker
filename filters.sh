@@ -4,7 +4,13 @@ git clone https://x-access-token:$API_TOKEN_GITHUB@github.com/$INPUT_DESTINATION
 mkdir /repros/$INPUT_DESTINATION_FOLDER/$INPUT_DESTINATION_VERSION
 pip3 install -r /filters-maker/requirements.txt
 cd /repros
+cp /filters-maker/crawler.py /repros/crawler.py
+cp /filters-maker/maker-rpz.py /repros/maker-rpz.py
+cp /filters-maker/maker-domains.py /repros/maker-domains.py
 python3 /filters-maker/$INPUT_ACTION_FILE
+rm /repros/crawler.py
+rm /repros/maker-rpz.py
+rm /repros/maker-domains.py
 git config --local user.name $INPUT_GIT_NAME
 git config --local user.email $INPUT_GIT_EMAIL
 git add .
