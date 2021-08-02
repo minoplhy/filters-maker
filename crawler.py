@@ -68,6 +68,20 @@ def killingdup(duplicated_file):
     print("++ successful!")
     f.close()
 
+def excluded(excluded_file ,incoming):
+    with open(excluded ,'r') as f:
+        exclude = f.read().split()
+    with open(incoming ,'r') as f:
+        lines = f.read().splitlines() # read lines
+    with open(output ,'w') as f:
+        for line in lines:
+            if line.strip() and not line in exclude and not line.startswith(';'):
+               f.write('\n'.join([line + ' CNAME .\n']))
+            elif line.startswith((';','$','@','  IN')):
+               f.write('\n'.join([line + '\n']))
+            elif not line.strip():
+               f.write('\n'.join([line + '\n']))
+
 if __name__ == "__main__":
     download_filters('https://filters.kylz.nl/RPZ/someonewhocares/rpz.txt','test.txt')
     filtering('test.txt')
