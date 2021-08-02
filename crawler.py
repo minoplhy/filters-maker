@@ -28,7 +28,7 @@ def filtering(filters_welcome):
         lines = f.read().splitlines()
     with open(filters_welcome, 'w') as f:
         for line in lines:
-             if not line.startswith(('#',';','@','$','  NS','@@||')) and line.strip():
+             if not line.startswith(('#',';','@','$','  NS','@@||','!')) and line.strip():
               f.write('\n'.join([line + '\n']))
         print("++ successful!")
         f.close()
@@ -44,6 +44,20 @@ def filteringcon(filters_regex_one):
     with open(filters_regex_one, 'w') as f1:
          f1.writelines(["%s\n" % item  for item in file])
     print("++ successful!")
+    f.close()
+
+    a = ['||','^','|']
+    lst = []
+    with open(filters_regex_one, 'r') as f:
+        for line in f:
+            for word in a:
+                if word in line:
+                    line = line.replace(word,'')
+            lst.append(line)
+    f.close()
+    with open(filters_regex_one, 'w') as f:
+        for line in lst:
+            f.write(line)
     f.close()
 
 def killingdup(duplicated_file):
@@ -63,6 +77,7 @@ download_filters("https://filters.kylz.nl/RPZ/adguard/cname-original.txt")
 download_filters("https://filters.kylz.nl/RPZ/stevenblack/f-s.txt")
 download_filters("https://filters.kylz.nl/RPZ/someonewhocares/rpz.txt")
 download_filters("https://urlhaus.abuse.ch/downloads/rpz/")
+download_filters("https://github.com/easylist/easylist/raw/master/easylist/easylist_adservers.txt")
 filtering(input)
 filteringcon(input)
 killingdup(input)
