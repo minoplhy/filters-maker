@@ -29,9 +29,9 @@ def domainsbuilding(excluded ,incoming):
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith('#'):
                f.write('\n'.join([line + '\n']))
-            if line.startswith((';','$','@','  IN')):
+            elif line.startswith((';','$','@','  IN')):
                f.write('\n'.join([line + '\n']))
-            if not line.strip():
+            elif not line.strip():
                f.write('\n'.join([line + '\n']))
     f.close()
 
