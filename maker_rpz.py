@@ -6,16 +6,16 @@ import pytz
 UTC = pytz.utc
 date = datetime.datetime.now(UTC)
 
-def linecounter():
-    with open(input) as f:
+def linecounter(incoming):
+    with open(incoming) as f:
         for i, l in enumerate(f):
             pass
     return i + 1
 
-def RPZbuilding(excluded,input,output):
+def RPZbuilding(excluded,incoming,output):
     with open(excluded ,'r') as f:
         exclude = f.read().split()
-    with open(input ,'r') as f:
+    with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
     with open(output ,'w') as f:
         f.write('; Title : Minoplhy Personal Blocklist\n')
