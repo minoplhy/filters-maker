@@ -5,12 +5,13 @@ import re
 
 print('starting . . . ')
 
-def download_filters(url,incoming):
+def clear_old_files(incoming):
     try:
         os.remove(incoming)
     except OSError:
         pass
 
+def download_filters(url,incoming):
     print("downloading: ",url)
       
     get = requests.get(url)
