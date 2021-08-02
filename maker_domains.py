@@ -6,8 +6,8 @@ import pytz
 UTC = pytz.utc
 date = datetime.datetime.now(UTC)
 
-def linecounter():
-    with open(input) as f:
+def linecounter(incoming):
+    with open(incoming) as f:
         for i, l in enumerate(f):
             pass
     return i + 1
