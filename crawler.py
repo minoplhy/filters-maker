@@ -73,7 +73,7 @@ def excluded(excluded_file ,incoming):
         exclude = f.read().split()
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
-    with open(output ,'w') as f:
+    with open(incoming ,'w') as f:
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith(';'):
                f.write('\n'.join([line + ' CNAME .\n']))
