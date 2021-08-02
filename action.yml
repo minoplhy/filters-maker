@@ -20,6 +20,9 @@ inputs:
   Destination_VERSION:
     description: "version"
     required: true
+  ACTION_NAME:
+    description: 'action script'
+    required: true
   GIT_NAME:
     description: 'username'
     required: true
@@ -39,6 +42,7 @@ runs:
     - ${{ inputs.Destination_REPO }}
     - ${{ inputs.Destination_FOLDER }}
     - ${{ inputs.Destination_VERSION }}
+    - ${{ inputs.ACTION_FILE }}
     - ${{ inputs.GIT_NAME }}
     - ${{ inputs.GIT_EMAIL }}
     - ${{ inputs.REPO_BRANCH }}

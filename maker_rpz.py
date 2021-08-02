@@ -40,6 +40,4 @@ def RPZbuilding():
             if not line.strip():
                f.write('\n'.join([line + '\n']))
     f.close()
-
-RPZbuilding()
 exit()

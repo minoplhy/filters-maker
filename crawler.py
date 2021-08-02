@@ -12,7 +12,12 @@ try:
 except OSError:
     pass
 
-def download_filters(url):
+def download_filters(url,input):
+    try:
+        os.remove(input)
+    except OSError:
+        pass
+    
     print("downloading: ",url)
       
     get = requests.get(url)
