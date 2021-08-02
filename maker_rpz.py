@@ -3,10 +3,6 @@ import sys
 import datetime
 import pytz
 
-
-excluded = sys.argv[1]
-input = sys.argv[2]
-output = sys.argv[3]
 UTC = pytz.utc
 date = datetime.datetime.now(UTC)
 
@@ -16,7 +12,7 @@ def linecounter():
             pass
     return i + 1
 
-def RPZbuilding():
+def RPZbuilding(excluded,input,output):
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(input ,'r') as f:
@@ -40,4 +36,6 @@ def RPZbuilding():
             if not line.strip():
                f.write('\n'.join([line + '\n']))
     f.close()
-exit()
+
+    if __name__ == "__main__":
+        RPZbuilding(None,'test.txt','test.rpz')

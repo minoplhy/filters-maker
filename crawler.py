@@ -5,14 +5,9 @@ import re
 
 print('starting . . . ')
 
-try:
-    os.remove(input)
-except OSError:
-    pass
-
-def download_filters(url,input):
+def download_filters(url,incoming):
     try:
-        os.remove(input)
+        os.remove(incoming)
     except OSError:
         pass
 
@@ -20,7 +15,7 @@ def download_filters(url,input):
       
     get = requests.get(url)
     if get.status_code == requests.codes.ok:
-         with open(input, 'ab') as f:
+         with open(incoming, 'ab') as f:
           for data in get:
            f.write(data)
     return url
@@ -72,7 +67,8 @@ def killingdup(duplicated_file):
     print("++ successful!")
     f.close()
 
-print('process completed.')
-print('Location of your file is ' + input)
-
-exit()
+if __name__ == "__main__":
+    download_filters('https://filters.kylz.nl/RPZ/someonewhocares/rpz.txt','test.txt')
+    filtering('test.txt')
+    filteringcon('test.txt')
+    killingdup('test.txt')

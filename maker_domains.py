@@ -3,9 +3,6 @@ import sys
 import datetime
 import pytz
 
-
-excluded = sys.argv[1]
-input = sys.argv[2]
 UTC = pytz.utc
 date = datetime.datetime.now(UTC)
 
@@ -17,12 +14,12 @@ def linecounter():
 
 ankstanop = linecounter()
 
-def domainsbuilding():
+def domainsbuilding(excluded ,incoming):
     with open(excluded ,'r') as f:
         exclude = f.read().split()
-    with open(input ,'r') as f:
+    with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
-    with open(input ,'w') as f:
+    with open(incoming ,'w') as f:
         f.write('# Title : Minoplhy Personal Blocklist\n')
         f.write('# Description : My Very Personal DNS Blocklist plus crawling from the source\n')
         f.write('# Source : Resources/Source.txt\n')
@@ -39,5 +36,5 @@ def domainsbuilding():
                f.write('\n'.join([line + '\n']))
     f.close()
 
-domainsbuilding()
-exit()
+if __name__ == "__main__":
+    domainsbuilding(None,'test.txt')
