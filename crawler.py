@@ -3,8 +3,6 @@ import sys
 import requests
 import re
 
-input = sys.argv[1]
-
 print('starting . . . ')
 
 try:
@@ -73,21 +71,5 @@ def killingdup(duplicated_file):
           f.writelines(set(lines))
     print("++ successful!")
     f.close()
-
-download_filters("https://dbl.oisd.nl/")
-download_filters("https://hosts.netlify.app/Pro/rpz.txt")
-download_filters("https://filters.kylz.nl/RPZ/adguard/dns.txt")
-download_filters("https://filters.kylz.nl/RPZ/adguard/cname-tracker.txt")
-download_filters("https://filters.kylz.nl/RPZ/adguard/cname-original.txt")
-download_filters("https://filters.kylz.nl/RPZ/stevenblack/f-s.txt")
-download_filters("https://filters.kylz.nl/RPZ/someonewhocares/rpz.txt")
-download_filters("https://urlhaus.abuse.ch/downloads/rpz/")
-download_filters("https://github.com/easylist/easylist/raw/master/easylist/easylist_adservers.txt")
-filtering(input)
-filteringcon(input)
-killingdup(input)
-
-print('process completed.')
-print('Location of your file is ' + input)
 
 exit()
