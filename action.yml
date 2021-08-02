@@ -20,7 +20,7 @@ inputs:
   Destination_VERSION:
     description: "version"
     required: true
-  ACTION_NAME:
+  ACTION_FILE:
     description: 'action script'
     required: true
   GIT_NAME:
