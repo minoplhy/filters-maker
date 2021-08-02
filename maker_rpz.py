@@ -21,7 +21,7 @@ def RPZbuilding(excluded,incoming,output):
         f.write('; Title : Minoplhy Personal Blocklist\n')
         f.write('; Description : My Very Personal DNS Blocklist plus crawling from the source\n')
         f.write('; Source : Resources/Source.txt\n')
-        f.write('; Rule Counter : ' + str(linecounter()) +' Rules\n')
+        f.write('; Rule Counter : ' + str(linecounter(incoming)) +' Rules\n')
         f.write('; Format : RPZ\n')
         f.write('; Licenses : MIT\n')
         f.write('; Compiled Date : ' + str(date) +'\n\n')
