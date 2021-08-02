@@ -76,7 +76,7 @@ def excluded(excluded ,incoming):
     with open(incoming ,'w') as f:
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith(';'):
-               f.write('\n'.join([line + ' CNAME .\n']))
+               f.write('\n'.join([line + '\n']))
             elif line.startswith((';','$','@','  IN')):
                f.write('\n'.join([line + '\n']))
             elif not line.strip():
