@@ -68,7 +68,7 @@ def killingdup(duplicated_file):
     print("++ successful!")
     f.close()
 
-def excluded(excluded_file ,incoming):
+def excluded(excluded ,incoming):
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
