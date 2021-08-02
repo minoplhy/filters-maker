@@ -3,10 +3,6 @@ import sys
 import datetime
 import pytz
 
-
-excluded = sys.argv[1]
-input = sys.argv[2]
-output = sys.argv[3]
 UTC = pytz.utc
 date = datetime.datetime.now(UTC)
 
