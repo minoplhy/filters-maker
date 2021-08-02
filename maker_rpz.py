@@ -13,6 +13,7 @@ def linecounter(incoming):
     return i + 1
 
 def RPZbuilding(excluded,incoming,output):
+    ankstanop = linecounter(incoming)
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -21,7 +22,7 @@ def RPZbuilding(excluded,incoming,output):
         f.write('; Title : Minoplhy Personal Blocklist\n')
         f.write('; Description : My Very Personal DNS Blocklist plus crawling from the source\n')
         f.write('; Source : Resources/Source.txt\n')
-        f.write('; Rule Counter : ' + str(linecounter()) +' Rules\n')
+        f.write('; Rule Counter : ' + str(ankstanop) +' Rules\n')
         f.write('; Format : RPZ\n')
         f.write('; Licenses : MIT\n')
         f.write('; Compiled Date : ' + str(date) +'\n\n')

@@ -12,9 +12,9 @@ def linecounter(incoming):
             pass
     return i + 1
 
-ankstanop = linecounter()
 
 def domainsbuilding(excluded ,incoming):
+    ankstanop = linecounter(incoming)
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
