@@ -1,3 +1,4 @@
+import crawler
 
 def add(incoming,input):
     with open(incoming, 'r') as f:
@@ -8,7 +9,7 @@ def add(incoming,input):
         lines = set(f.readlines())
     with open(incoming, 'w') as f:
           f.writelines(set(lines))
-    sort(incoming)
+    crawler.sort(incoming)
 
 def add_file(incoming,excluded_in):
     data= ""
@@ -24,11 +25,4 @@ def add_file(incoming,excluded_in):
         lines = set(f.readlines())
     with open(incoming, 'w') as f:
           f.writelines(set(lines))
-    sort(incoming)
-
-def sort(incoming):
-    with open(incoming, 'r') as f:
-        lines = sorted(f.readlines())
-    with open(incoming, 'w') as f:
-        for line in lines:
-            f.write(line)
+    crawler.sort(incoming)
