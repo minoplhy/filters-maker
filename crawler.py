@@ -3,8 +3,6 @@ import sys
 import requests
 import re
 
-print('starting . . . ')
-
 def clear_old_files(incoming):
     try:
         os.remove(incoming)
@@ -27,8 +25,8 @@ def filtering(filters_welcome):
         lines = f.read().splitlines()
     with open(filters_welcome, 'w') as f:
         for line in lines:
-             if not line.startswith(('#',';','@','$','  NS','@@||','!')) and line.strip():
-              f.write('\n'.join([line + '\n']))
+            if not line.startswith(('#',';','@','$','  NS',' NS','@@||','!')) and line.strip():
+                f.write('\n'.join([line + '\n']))
         print("++ successful!")
         f.close()
 
@@ -81,6 +79,13 @@ def excluded(excluded ,incoming):
                f.write('\n'.join([line + '\n']))
             elif not line.strip():
                f.write('\n'.join([line + '\n']))
+
+def sort(incoming):
+    with open(incoming, 'r') as f:
+        lines = sorted(f.readlines())
+    with open(incoming, 'w') as f:
+        for line in lines:
+            f.write(line)
 
 if __name__ == "__main__":
     download_filters('https://filters.kylz.nl/RPZ/someonewhocares/rpz.txt','test.txt')
