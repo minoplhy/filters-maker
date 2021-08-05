@@ -86,9 +86,3 @@ def sort(incoming):
     with open(incoming, 'w') as f:
         for line in lines:
             f.write(line)
-
-if __name__ == "__main__":
-    download_filters('https://filters.kylz.nl/RPZ/someonewhocares/rpz.txt','test.txt')
-    filtering('test.txt')
-    filteringcon('test.txt')
-    killingdup('test.txt')
