@@ -1,5 +1,3 @@
-import os
-import sys
 import datetime
 import pytz
 
@@ -37,6 +35,3 @@ def RPZbuilding(excluded,incoming,output):
             elif not line.strip():
                f.write('\n'.join([line + '\n']))
     f.close()
-
-    if __name__ == "__main__":
-        RPZbuilding(None,'test.txt','test.rpz')

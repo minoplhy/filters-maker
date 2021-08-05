@@ -1,5 +1,3 @@
-import os
-import sys
 import datetime
 import pytz
 
@@ -34,6 +32,3 @@ def domainsbuilding(excluded ,incoming):
             elif not line.strip():
                f.write('\n'.join([line + '\n']))
     f.close()
-
-if __name__ == "__main__":
-    domainsbuilding(None,'test.txt')
