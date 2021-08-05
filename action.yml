@@ -9,28 +9,28 @@ inputs:
     description: "destination's name of repo"
     required: true
   Destination_UNAME:
-    description: "Idk"
+    description: "Destination GitHub Username"
     required: true
   Destination_REPO:
-    description: "repo name"
+    description: "Destination GitHub Repo Name"
     required: true
   Destination_FOLDER:
-    description: "folder"
+    description: "folder of action"
     required: true
   Destination_VERSION:
-    description: "version"
+    description: "Version on Destination etc. Pro , ucate , Hell"
     required: true
   ACTION_FILE:
-    description: 'action script'
+    description: 'action script for example look at action.example.py I'm calling this the Really Action Script'
     required: true
   GIT_NAME:
-    description: 'username'
+    description: 'Git Username'
     required: true
   GIT_EMAIL:
-    description: 'email'
+    description: 'Git E-mail'
     required: true
   REPO_BRANCH:
-    description: 'branch'
+    description: 'Git Branch'
     required: true
     
 runs:
