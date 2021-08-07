@@ -21,16 +21,16 @@ inputs:
     description: "Version on Destination etc. Pro , ucate , Hell"
     required: true
   ACTION_FILE:
-    description: 'action script for example look at action.example.py I'm calling this the Really Action Script'
+    description: "action script for example look at action.example.py I'm calling this the Really Action Script"
     required: true
   GIT_NAME:
-    description: 'Git Username'
+    description: "Git Username"
     required: true
   GIT_EMAIL:
-    description: 'Git E-mail'
+    description: "Git E-mail"
     required: true
   REPO_BRANCH:
-    description: 'Git Branch'
+    description: "Git Branch"
     required: true
     
 runs:
