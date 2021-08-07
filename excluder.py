@@ -13,9 +13,14 @@ def add(incoming,input):
     crawler.sort(incoming)
 
 def add_file(incoming,excluded_in):
-    with open(incoming, "wb") as outfile:
-           with open(excluded_in, "rb") as infile:
-                outfile.write(infile.read())
+    data= ""
+    with open(incoming) as fp:
+        data = fp.read()
+    with open(excluded_in) as fp:
+        data2 = fp.read()
+    data += data2
+    with open (incoming, 'w') as fp:
+        fp.write(data + '\n')
     with open(incoming, 'r') as f:
         lines = set(f.readlines())
     with open(incoming, 'w') as f:
