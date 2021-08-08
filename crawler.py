@@ -72,6 +72,7 @@ def filteringcon(filters_regex_one):
         for i in range(len(file)):
             file[i] = re.sub('\s\s+', ' ', file[i])
             file[i] = re.sub('#..*', '', file[i])
+            file[i] = re.sub('CNAME . ;..*', '', file[i])
             file[i] = re.sub(';..*', '', file[i])
     with open(filters_regex_one, 'w') as f1:
         f1.writelines(["%s\n" % item  for item in file])
