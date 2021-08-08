@@ -42,7 +42,7 @@ def filteringcon(filters_regex_one):
     print("++ successful!")
     f.close()
 
-    a = ['||','^','|']
+    a = ['||','^','|','0.0.0.0 ','0.0.0.0','::1 ','127.0.0.1 ','0','::','::1','127.0.0.1','0','::']
     lst = []
     with open(filters_regex_one, 'r') as f:
         for line in f:
@@ -55,6 +55,23 @@ def filteringcon(filters_regex_one):
         for line in lst:
             f.write(line)
     f.close()
+
+    remove_words = ['localhost','localhost.localdomain','local','broadcasthost','loopback','ip6-localnet','ip6-mcastprefix','ip6-allnodes','ip6-allrouters','ip6-allhosts','ip6-loopback']
+    with open(filters_regex_one, 'r') as f:
+        lines = f.read().splitlines()
+    with open(filters_regex_one, 'w') as f:
+        for line in lines:
+            if not any(remove_word in line for remove_word in remove_words):
+                f.write('\n'.join([line + '\n']))
+    with open(filters_regex_one) as f:
+        file = f.read().split('\n')
+        for i in range(len(file)):
+            file[i] = re.sub('\s\s+', ' ', file[i])
+            file[i] = re.sub('#..*', '', file[i])
+    with open(filters_regex_one, 'w') as f1:
+        f1.writelines(["%s\n" % item  for item in file])
+    f.close() 
+    
 
 def killingdup(duplicated_file):
     print('Getting rid of duplicated line')
