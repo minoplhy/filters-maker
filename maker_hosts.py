@@ -10,7 +10,7 @@ def linecounter(incoming):
             pass
     return i + 1
 
-def hostsbuilding(excluded ,incoming) ,output:
+def hostsbuilding(excluded ,incoming ,output):
     ankstanop = linecounter(incoming)
     with open(excluded ,'r') as f:
         exclude = f.read().split()
