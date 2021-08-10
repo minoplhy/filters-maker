@@ -25,6 +25,12 @@ def add_file(incoming,excluded_in):
         lines = set(f.readlines())
     with open(incoming, 'w') as f:
           f.writelines(set(lines))
+    with open(incoming ,'r') as f:
+        lines = f.read().split()
+    with open(incoming ,'w') as f:
+        for line in lines:
+            if line.strip():
+                f.write('\n'.join([line + '\n']))
     crawler.sort(incoming)
     os.remove(excluded_in)
 
