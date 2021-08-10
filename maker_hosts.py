@@ -37,7 +37,7 @@ def hostsbuilding(excluded ,incoming ,output):
         f.write('ff02::1 ip6-allnodes\n')
         f.write('ff02::2 ip6-allrouters\n')
         f.write('ff02::3 ip6-allhosts\n')
-        f.write('0.0.0.0 0.0.0.0\n\n\n')
+        f.write('0.0.0.0 0.0.0.0\n\n')
         
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith('#'):

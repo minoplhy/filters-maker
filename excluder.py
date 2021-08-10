@@ -27,3 +27,24 @@ def add_file(incoming,excluded_in):
           f.writelines(set(lines))
     crawler.sort(incoming)
     os.remove(excluded_in)
+
+def remove(incoming,input):
+    with open(incoming, 'r') as f:
+        lines = f.read().split()
+    with open(incoming, 'w') as f:
+        for line in lines:
+            if line.startswith(input) and input in line:
+                f.write(line.replace(input ,''))
+            elif not line.startswith(input):
+                f.write('\n'.join([line + '\n']))
+    with open(incoming ,'r') as f:
+        lines = f.read().split()
+    with open(incoming ,'w') as f:
+        for line in lines:
+            if line.strip():
+                f.write('\n'.join([line + '\n']))
+    with open(incoming, 'r') as f:
+        lines = set(f.readlines())
+    with open(incoming, 'w') as f:
+          f.writelines(set(lines))
+    crawler.sort(incoming)
