@@ -63,7 +63,6 @@ def remove_file(incoming ,removed_in):
     os.remove(removed_in)
 
 def search(incoming,userinput):
-
     with open(incoming, 'r') as f:
         lines = f.read().split()
         for line in lines:
