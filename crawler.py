@@ -19,12 +19,13 @@ def download_filters(url,incoming):
     return url
 
 def filtering(filters_welcome):
+    unwanted = ['#',';','@','$','  NS',' NS','@@||','!']
     print("filtering . . .")
     with open(filters_welcome, 'r') as f:
         lines = f.read().splitlines()
     with open(filters_welcome, 'w') as f:
         for line in lines:
-            if not line.startswith(('#',';','@','$','  NS',' NS','@@||','!')) and line.strip():
+            if not line.startswith((tuple(unwanted))) and line.strip():
                 f.write('\n'.join([line + '\n']))
         print("++ successful!")
         f.close()
@@ -89,6 +90,7 @@ def killingdup(duplicated_file):
     f.close()
 
 def excluded(excluded ,incoming):
+    exline = [';','$','@','  IN']
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -97,7 +99,7 @@ def excluded(excluded ,incoming):
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith(';'):
                f.write('\n'.join([line + '\n']))
-            elif line.startswith((';','$','@','  IN')):
+            elif line.startswith((tuple(exline))):
                f.write('\n'.join([line + '\n']))
             elif not line.strip():
                f.write('\n'.join([line + '\n']))

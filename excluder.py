@@ -13,6 +13,7 @@ def add(incoming,userinput):
     crawler.sort(incoming)
 
 def add_file(incoming,excluded_in):
+    comment_roc = ['#',';','!']
     data= ""
     with open(incoming) as fp:
         data = fp.read()
@@ -29,7 +30,7 @@ def add_file(incoming,excluded_in):
         lines = f.read().split()
     with open(incoming ,'w') as f:
         for line in lines:
-            if line.strip():
+            if line.strip() and not line.startswith((tuple(comment_roc))):
                 f.write('\n'.join([line + '\n']))
     crawler.sort(incoming)
     os.remove(excluded_in)
