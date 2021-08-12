@@ -60,7 +60,7 @@ def filteringcon(filters_regex_one):
             f.write(line)
         f.close()
 
-    remove_words = ['localhost','localhost.localdomain','local','broadcasthost','loopback','ip6-localnet','ip6-mcastprefix','ip6-allnodes','ip6-allrouters','ip6-allhosts','ip6-loopback']
+    remove_words = ['localhost','localhost.localdomain','local','broadcasthost','loopback','ip6-localnet','ip6-mcastprefix','ip6-allnodes','ip6-allrouters','ip6-allhosts','ip6-loopback',' CNAME rpz-passthru.']
     
     with open(filters_regex_one, 'r') as f:
         lines = f.read().splitlines()
