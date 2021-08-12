@@ -38,6 +38,7 @@ def filteringcon(filters_regex_one):
              file[i] = re.sub('\s\s+#.*', '', file[i])
              file[i] = re.sub(' CNAME .$', '', file[i])
              file[i] = re.sub(' CNAME . $', '', file[i])
+             file[i] = re.sub('^\*.', '', file[i])
     with open(filters_regex_one, 'w') as f1:
          f1.writelines(["%s\n" % item  for item in file])
     print("++ successful!")
@@ -48,7 +49,7 @@ def filteringcon(filters_regex_one):
     with open(filters_regex_one, 'r') as f:
         for line in f:
             for word in a:
-                if word in line and not line.startswith('#') and line.startswith((tuple(a))):
+                if word in line and not line.startswith('#') and line.startswith((tuple(a))) and not '.' in line:
                     line = line.replace(word,'')
                 else:
                     line = line.replace(line, line)
