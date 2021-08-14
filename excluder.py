@@ -34,7 +34,7 @@ def add_file(incoming,excluded_in):
     with open(incoming, 'w') as f:
         f.writelines(set(lines))
     crawler.sort(incoming)
-    asap = input("Do You wish to Delete Input File (Y/N) \n")
+    asap = input("Do You wish to Delete Input File (Y/N) : ")
     if asap == 'Y' or asap == 'y':
         os.remove(excluded_in)
     else:
@@ -73,7 +73,7 @@ def remove_file(incoming ,removed_in):
                 f.write(line.replace(line ,''))
             elif not line.startswith((tuple(stallin))):
                 f.write('\n'.join([line + '\n']))
-    asap = input("Do You wish to Delete Input File (Y/N) \n")
+    asap = input("Do You wish to Delete Input File (Y/N) : ")
     if asap == 'Y' or asap == 'y':
         os.remove(removed_in)
     else:
