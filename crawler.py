@@ -39,6 +39,11 @@ def filteringcon(filters_regex_one):
              file[i] = re.sub(' CNAME .$', '', file[i])
              file[i] = re.sub(' CNAME . $', '', file[i])
              file[i] = re.sub('^\*.', '', file[i])
+             file[i] = re.sub('\s\s+', ' ', file[i])
+             file[i] = re.sub('#..*', '', file[i])
+             file[i] = re.sub('CNAME . ;..*', '', file[i])
+             file[i] = re.sub(';..*', '', file[i])
+             file[i] = re.sub('\A^\.' ,'' ,file[i])
     with open(filters_regex_one, 'w') as f1:
          f1.writelines(["%s\n" % item  for item in file])
     print("++ successful!")
@@ -53,6 +58,9 @@ def filteringcon(filters_regex_one):
             file[i] = re.sub('\A0 ', '', file[i])
             file[i] = re.sub('\A:: ', '', file[i])
             file[i] = re.sub('\A::1 ', '' ,file[i])
+            file[i] = re.sub('^\A\|\|', '' ,file[i])
+            file[i] = re.sub('\^$\Z', '' ,file[i])
+            file[i] = re.sub('^\|' ,'' ,file[i])
             file[i] = re.sub(r'#', ';', file[i])
     with open(filters_regex_one, 'w') as f1:
         f1.writelines(["%s\n" % item  for item in file])
@@ -66,19 +74,7 @@ def filteringcon(filters_regex_one):
         for line in lines:
             if not line.endswith((tuple(remove_words))):
                 f.write('\n'.join([line + '\n']))
-    
-    with open(filters_regex_one) as f:
-        file = f.read().split('\n')
-        for i in range(len(file)):
-            file[i] = re.sub('\s\s+', ' ', file[i])
-            file[i] = re.sub('#..*', '', file[i])
-            file[i] = re.sub('CNAME . ;..*', '', file[i])
-            file[i] = re.sub(';..*', '', file[i])
-            file[i] = re.sub('\A^\.' ,'' ,file[i])
-    with open(filters_regex_one, 'w') as f1:
-        f1.writelines(["%s\n" % item  for item in file])
-    f.close() 
-    
+        f.close()
 
 def killingdup(duplicated_file):
     print('Getting rid of duplicated line')
