@@ -43,21 +43,20 @@ def filteringcon(filters_regex_one):
          f1.writelines(["%s\n" % item  for item in file])
     print("++ successful!")
     f.close()
-
-    a = ['||','^','|','0.0.0.0 ','0.0.0.0','::1 ','127.0.0.1 ','0','::','::1','127.0.0.1','0','::']
-    lst = []
-    with open(filters_regex_one, 'r') as f:
-        for line in f:
-            for word in a:
-                if word in line and not line.startswith('#') and line.startswith((tuple(word))) and not '.' in line:
-                    line = line.replace(word,'')
-                elif '.' in line and not line.startswith('.'):
-                    line = line.replace(line, line)
-            lst.append(line)
-    with open(filters_regex_one, 'w') as f:
-        for line in lst:
-            f.write(line)
-        f.close()
+    
+    with open(filters_regex_one) as f:
+        file = f.read().split('\n')
+        for i in range(len(file)):
+            file[i] = re.sub('0\.0\.0\.0 0\.0\.0\.0\Z', '' ,file[i])
+            file[i] = re.sub('\A127\.0\.0\.1 ', '', file[i])
+            file[i] = re.sub('\A0\.0\.0\.0 ', '', file[i])
+            file[i] = re.sub('\A0 ', '', file[i])
+            file[i] = re.sub('\A:: ', '', file[i])
+            file[i] = re.sub('\A::1 ', '' ,file[i])
+            file[i] = re.sub(r'#', ';', file[i])
+    with open(filters_regex_one, 'w') as f1:
+        f1.writelines(["%s\n" % item  for item in file])
+    f.close() 
 
     remove_words = ['localhost','localhost.localdomain','local','broadcasthost','loopback','ip6-localnet','ip6-mcastprefix','ip6-allnodes','ip6-allrouters','ip6-allhosts','ip6-loopback',' CNAME rpz-passthru.']
     
