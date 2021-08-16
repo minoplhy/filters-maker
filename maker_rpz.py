@@ -29,7 +29,7 @@ def RPZbuilding(excluded,incoming,output):
         f.write(' NS  localhost.\n\n')
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith(';'):
-               f.write('\n'.join([line + ' CNAME .\n'])) and f.write('\n'.join(['*.'+line+' CNAME .\n']))
+               f.write('\n'.join([line + ' CNAME .\n']))
             elif line.startswith((';','$','@','  IN')):
                f.write('\n'.join([line + '\n']))
     f.close()
