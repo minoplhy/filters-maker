@@ -32,6 +32,9 @@ inputs:
   REPO_BRANCH:
     description: "Git Branch"
     required: true
+  BRANCH_VERSION:
+    description: "Git Version Branch"
+    required: true
     
 runs:
   using: "docker"
