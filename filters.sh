@@ -15,7 +15,6 @@ git reflog expire --all --expire=now
 git gc --prune=now --aggressive
 git push -u origin $INPUT_REPO_BRANCH
 cd /repros
-python3 /repros/$INPUT_ACTION_FILE
 git config --local user.name $INPUT_GIT_NAME
 git config --local user.email $INPUT_GIT_EMAIL
 git add .
