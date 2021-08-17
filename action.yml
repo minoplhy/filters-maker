@@ -34,7 +34,7 @@ inputs:
     required: true
   BRANCH_VERSION:
     description: "Git Version Branch"
-    required: true
+    required: false
     
 runs:
   using: "docker"
@@ -49,3 +49,4 @@ runs:
     - ${{ inputs.GIT_NAME }}
     - ${{ inputs.GIT_EMAIL }}
     - ${{ inputs.REPO_BRANCH }}
+    - ${{ inputs.BRANCH_VERSION }}
