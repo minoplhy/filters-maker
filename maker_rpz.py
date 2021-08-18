@@ -23,10 +23,10 @@ def RPZbuilding(excluded,incoming,output):
         f.write('; Rule Counter : ' + str(ankstanop) +' Rules\n')
         f.write('; Format : RPZ\n')
         f.write('; Licenses : MIT\n')
-        f.write('; Compiled Date : ' + str(date) +'\n\n')
+        f.write('; Compiled Date : ' + str(date) +'\n;\n')
         f.write('$TTL 30\n')
         f.write('@ IN SOA localhost. root.localhost. (1 6h 1h 1w 2h)\n')
-        f.write(' NS  localhost.\n\n')
+        f.write(' NS  localhost.\n;\n')
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith(';'):
                f.write('\n'.join([line + ' CNAME .\n']))
