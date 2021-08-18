@@ -79,7 +79,7 @@ def filteringcon(filters_regex_one):
         lines = f.read().splitlines()
     with open(filters_regex_one, 'w') as f:
         for line in lines:
-            f.write('\n'.join(line.split()))
+            f.write('\n'.join(line.split('\n')))
 
 def killingdup(duplicated_file):
     print('Getting rid of duplicated line')
