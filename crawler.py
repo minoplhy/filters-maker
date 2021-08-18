@@ -75,6 +75,11 @@ def filteringcon(filters_regex_one):
             if not line.endswith((tuple(remove_words))):
                 f.write('\n'.join([line + '\n']))
         f.close()
+    with open(filters_regex_one, 'r') as f:
+        lines = f.read().splitlines()
+    with open(filters_regex_one, 'w') as f:
+        for line in lines:
+            f.write('\n'.join(line.split())
 
 def killingdup(duplicated_file):
     print('Getting rid of duplicated line')
