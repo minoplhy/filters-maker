@@ -22,7 +22,7 @@ def hostsbuilding(excluded ,incoming ,output,Version):
         f.write('# Source : Resources/Source.txt\n')
         f.write('# Rule Counter : ' + str(ankstanop) +' Rules\n')
         f.write('# Format : Hosts\n')
-        f.write('# Type : Allowlist\n')
+        f.write('# Type : Blocklist\n')
         f.write('# Version : ' + str(Version) +'\n')
         f.write('# Licenses : MIT\n')
         f.write('# Compiled Date : ' + str(date) +'\n\n')
