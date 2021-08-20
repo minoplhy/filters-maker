@@ -10,7 +10,7 @@ def linecounter(incoming):
             pass
     return i + 1
 
-def RPZbuilding(excluded,incoming,output):
+def RPZbuilding(excluded,incoming,output,Version):
     ankstanop = linecounter(incoming)
     with open(excluded ,'r') as f:
         exclude = f.read().split()
@@ -22,6 +22,8 @@ def RPZbuilding(excluded,incoming,output):
         f.write('; Source : Resources/Source.txt\n')
         f.write('; Rule Counter : ' + str(ankstanop) +' Rules\n')
         f.write('; Format : RPZ\n')
+        f.write('; Type : Blocklist\n')
+        f.write('; Version : ' + str(Version) +'\n')
         f.write('; Licenses : MIT\n')
         f.write('; Compiled Date : ' + str(date) +'\n;\n')
         f.write('$TTL 30\n')
@@ -30,6 +32,27 @@ def RPZbuilding(excluded,incoming,output):
         for line in lines:
             if line.strip() and not line in exclude and not line.startswith(';'):
                f.write('\n'.join([line + ' CNAME .\n'])) and f.write('\n'.join(['*.' + line + ' CNAME .\n']))
+            elif line.startswith((';','$','@','  IN')):
+               f.write('\n'.join([line + '\n']))
+    f.close()
+
+def ABPallowlist(incoming,output,Version):
+    ankstanop = linecounter(incoming)
+    with open(incoming ,'r') as f:
+        lines = f.read().splitlines() # read lines
+    with open(output ,'w') as f:
+        f.write('; Title : Minoplhy Personal Blocklist\n')
+        f.write('; Description : My Very Personal DNS Blocklist plus crawling from the source\n')
+        f.write('; Source : Resources/Source.txt\n')
+        f.write('; Rule Counter : ' + str(ankstanop) +' Rules\n')
+        f.write('; Format : Domains\n')
+        f.write('; Type : Allowlist\n')
+        f.write('; Version : ' + str(Version) +'\n')
+        f.write('; Licenses : MIT\n')
+        f.write('; Compiled Date : ' + str(date) +'\n\n')
+        for line in lines:
+            if line.strip() and not line.startswith(';'):
+               f.write('\n'.join([line + 'CNAME rpz-passthru.\n']))
             elif line.startswith((';','$','@','  IN')):
                f.write('\n'.join([line + '\n']))
     f.close()
