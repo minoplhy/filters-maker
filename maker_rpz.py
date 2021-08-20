@@ -52,7 +52,7 @@ def RPZallowlist(incoming,output,Version):
         f.write('; Compiled Date : ' + str(date) +'\n\n')
         for line in lines:
             if line.strip() and not line.startswith(';'):
-               f.write('\n'.join([line + 'CNAME rpz-passthru.\n']))
+               f.write('\n'.join([line + ' CNAME rpz-passthru.\n']))
             elif line.startswith((';','$','@','  IN')):
                f.write('\n'.join([line + '\n']))
     f.close()
