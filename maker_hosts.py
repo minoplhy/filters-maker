@@ -10,7 +10,7 @@ def linecounter(incoming):
             pass
     return i + 1
 
-def hostsbuilding(excluded ,incoming ,output):
+def hostsbuilding(excluded ,incoming ,output,Version):
     ankstanop = linecounter(incoming)
     with open(excluded ,'r') as f:
         exclude = f.read().split()
@@ -22,6 +22,8 @@ def hostsbuilding(excluded ,incoming ,output):
         f.write('# Source : Resources/Source.txt\n')
         f.write('# Rule Counter : ' + str(ankstanop) +' Rules\n')
         f.write('# Format : Hosts\n')
+        f.write('# Type : Allowlist\n')
+        f.write('# Version : ' + str(Version) +'\n')
         f.write('# Licenses : MIT\n')
         f.write('# Compiled Date : ' + str(date) +'\n\n')
         f.write('127.0.0.1 localhost\n')
