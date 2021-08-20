@@ -36,7 +36,7 @@ def RPZbuilding(excluded,incoming,output,Version):
                f.write('\n'.join([line + '\n']))
     f.close()
 
-def ABPallowlist(incoming,output,Version):
+def RPZallowlist(incoming,output,Version):
     ankstanop = linecounter(incoming)
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
