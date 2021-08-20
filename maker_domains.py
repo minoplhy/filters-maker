@@ -35,11 +35,11 @@ def domainsbuilding(excluded ,incoming,Version):
                f.write('\n'.join([line + '\n']))
     f.close()
 
-def DMallowlist(incoming,Version):
+def DMallowlist(incoming, output,Version):
     ankstanop = linecounter(incoming)
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
-    with open(incoming ,'w') as f:
+    with open(output ,'w') as f:
         f.write('# Title : Minoplhy Personal Blocklist\n')
         f.write('# Description : My Very Personal DNS Blocklist plus crawling from the source\n')
         f.write('# Source : Resources/Source.txt\n')
