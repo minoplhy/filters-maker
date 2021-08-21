@@ -1,5 +1,5 @@
 #!/bin/bash
-cat $API_TOKEN_GITHUB > token.txt
+echo $API_TOKEN_GITHUB > token.txt
 gh auth login --with-token > token.txt
 rm token.txt
 git clone https://github.com/minoplhy/filters-maker /filters-maker
