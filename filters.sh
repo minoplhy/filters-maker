@@ -25,4 +25,5 @@ if [ -f "/repros/$INPUT_sub_action_location" ]; then
     python3 /repros/$INPUT_sub_action_location
     echo "Code Completed!"
 fi
+gh release delete latest
 gh release create latest /gh-releases/*
