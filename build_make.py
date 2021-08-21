@@ -7,4 +7,7 @@ def filepath_mass_changer(Version ,path ,apapath):
     for filename in f:
         s = os.path.basename(filename)
         os.rename(filename, os.path.join(path, Version + '_' + s ))
-    shutil.copytree(path, apapath)
+        f = glob.glob(os.path.join(path,"*.txt"))
+    for filename in f:
+        s = os.path.basename(filename)
+        shutil.copy2(os.path.join(path,s), apapath)
