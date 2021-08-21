@@ -1,6 +1,6 @@
 #!/bin/bash
 echo $API_TOKEN_GITHUB > token.txt
-gh auth login --with-token > token.txt
+gh auth login --with-token < token.txt
 rm token.txt
 git clone https://github.com/minoplhy/filters-maker /filters-maker
 git clone https://x-access-token:$API_TOKEN_GITHUB@github.com/$INPUT_DESTINATION_UNAME/$INPUT_DESTINATION_REPO.git /repros
