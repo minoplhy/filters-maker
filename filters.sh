@@ -20,4 +20,5 @@ git commit -m "Schedule Building : `date`"
 git push -u origin $INPUT_BRANCH_VERSION
 if [ -f "/repros/$INPUT_sub_action_location" ]; then
     python3 /repros/$INPUT_sub_action_location
+    echo "Code Completed!"
 fi
