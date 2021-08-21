@@ -18,3 +18,6 @@ git config --local user.email $INPUT_GIT_EMAIL
 git add .
 git commit -m "Schedule Building : `date`"
 git push -u origin $INPUT_BRANCH_VERSION
+if [ -f "/repros/$INPUT_sub_action_location" ]; then
+    python3 /repros/$INPUT_sub_action_location
+fi
