@@ -24,6 +24,6 @@ if [ -f "/repros/$INPUT_SUB_ACTION_LOCATION" ]; then
     rm token.txt
     python3 /repros/$INPUT_SUB_ACTION_LOCATION
     echo "Code Completed!"
-    gh release delete latest
+    gh release delete latest -y
     gh release create latest /gh-releases/*
 fi
