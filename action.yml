@@ -35,7 +35,13 @@ inputs:
   BRANCH_VERSION:
     description: "Git Version Branch"
     required: false
-    
+  sub_action_location:
+    description: "Action Location Must be in .py"
+    required: false
+  sub_action_Repo:
+    description: "Repo"
+    required: false
+
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -50,3 +56,5 @@ runs:
     - ${{ inputs.GIT_EMAIL }}
     - ${{ inputs.REPO_BRANCH }}
     - ${{ inputs.BRANCH_VERSION }}
+    - ${{ inputs.sub_action_location }}
+    - ${{ inputs.sub_action_Repo }}
