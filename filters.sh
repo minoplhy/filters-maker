@@ -1,7 +1,4 @@
 #!/bin/bash
-echo $API_TOKEN_GITHUB > token.txt
-gh auth login --with-token < token.txt
-rm token.txt
 git clone https://github.com/minoplhy/filters-maker /filters-maker
 git clone https://x-access-token:$API_TOKEN_GITHUB@github.com/$INPUT_DESTINATION_UNAME/$INPUT_DESTINATION_REPO.git /repros
 git clone https://x-access-token:$API_TOKEN_GITHUB@github.com/$INPUT_DESTINATION_UNAME/$INPUT_DESTINATION_REPO.wiki.git /reprwiki
@@ -21,9 +18,12 @@ git config --local user.email $INPUT_GIT_EMAIL
 git add .
 git commit -m "Schedule Building : `date`"
 git push -u origin $INPUT_BRANCH_VERSION
-if [ -f "/repros/$INPUT_sub_action_location" ]; then
-    python3 /repros/$INPUT_sub_action_location
+if [ -f "/repros/$INPUT_SUB_ACTION_LOCATION" ]; then
+    echo $API_TOKEN_GITHUB > token.txt
+    gh auth login --with-token < token.txt
+    rm token.txt
+    python3 /repros/$INPUT_SUB_ACTION_LOCATION
     echo "Code Completed!"
+    gh release delete latest
+    gh release create latest /gh-releases/*
 fi
-gh release delete latest
-gh release create latest /gh-releases/*
