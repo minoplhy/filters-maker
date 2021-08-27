@@ -19,5 +19,7 @@ if [ -f "/repros/$INPUT_SUB_ACTION_LOCATION" ]; then
     rm token.txt
     python3 /repros/$INPUT_SUB_ACTION_LOCATION
     echo "Code Completed!"
+	gh release delete latest -y
+	git tag | xargs -L 1 | xargs git push origin --delete
     gh release create latest -F /repros/Resources/Releases.md /gh-releases/* -t "FILTERS IN RELEASES"
 fi
