@@ -21,6 +21,7 @@ if [ -f "/repros/$INPUT_SUB_ACTION_LOCATION" ]; then
     python3 /repros/$INPUT_SUB_ACTION_LOCATION
     echo "Code Completed!"
 	gh release delete latest -y
-	git tag | xargs -L 1 | xargs git push origin --delete
+	git tag -d latest
+	git push origin :latest
     gh release create latest -F /repros/Resources/Releases.md /gh-releases/* -t "FILTERS IN RELEASES"
 fi
