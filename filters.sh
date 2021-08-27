@@ -8,6 +8,7 @@ pip3 install -r /filters-maker/requirements.txt
 cd /reprwiki
 python3 /repros/$INPUT_ACTION_FILE
 cd /repros
+TIMEDATE=`date`
 git config --local user.name $INPUT_GIT_NAME
 git config --local user.email $INPUT_GIT_EMAIL
 git add .
