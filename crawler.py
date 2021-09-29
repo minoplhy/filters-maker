@@ -92,6 +92,7 @@ def filteringcon(filters_regex_one):
             file[i] = re.sub('127\.0\.0\.1\Z', '', file[i])
             file[i] = re.sub('0\.0\.0\.0\Z', '', file[i])
             file[i] = re.sub('::\Z', '', file[i])
+            file[i] = re.sub('::1\Z', '', file[i])
             file[i] = re.sub('/\Z', '', file[i])
             file[i] = re.sub('/$', '', file[i])
     with open(filters_regex_one, 'w') as f1:
