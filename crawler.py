@@ -19,7 +19,7 @@ def download_filters(url,incoming):
     return url
 
 def filtering(filters_welcome):
-    unwanted = ['#',';','@','$','  NS',' NS','@@||','!']
+    unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:']
     print("filtering . . .")
     with open(filters_welcome, 'r') as f:
         lines = f.read().splitlines()
@@ -27,7 +27,7 @@ def filtering(filters_welcome):
         for line in lines:
             if not line.startswith((tuple(unwanted))) and line.strip():
                 f.write('\n'.join([line + '\n']))
-        print("++ successful!")
+        print("Simple Filtering Completed!")
         f.close()
 
 def filteringcon(filters_regex_one):
@@ -43,30 +43,61 @@ def filteringcon(filters_regex_one):
              file[i] = re.sub('#..*', '', file[i])
              file[i] = re.sub('CNAME . ;..*', '', file[i])
              file[i] = re.sub(';..*', '', file[i])
-             file[i] = re.sub('\A^\.' ,'' ,file[i])
-             file[i] = re.sub('^\s+|\s+$' ,'' ,file[i])
-             file[i] = re.sub(' $' ,'' ,file[i])
+             file[i] = re.sub('\A^\.', '', file[i])
+             file[i] = re.sub('^\s+|\s+$', '', file[i])
+             file[i] = re.sub(' $', '', file[i])
     with open(filters_regex_one, 'w') as f1:
          f1.writelines(["%s\n" % item  for item in file])
-    print("++ successful!")
+    print("RPZ filtering operation completed!")
     f.close()
     
     with open(filters_regex_one) as f:
         file = f.read().split('\n')
         for i in range(len(file)):
-            file[i] = re.sub('0\.0\.0\.0 0\.0\.0\.0\Z', '' ,file[i])
+            file[i] = re.sub('0\.0\.0\.0 0\.0\.0\.0\Z', '', file[i])
             file[i] = re.sub('\A127\.0\.0\.1 ', '', file[i])
             file[i] = re.sub('\A0\.0\.0\.0 ', '', file[i])
             file[i] = re.sub('\A0 ', '', file[i])
             file[i] = re.sub('\A:: ', '', file[i])
-            file[i] = re.sub('\A::1 ', '' ,file[i])
-            file[i] = re.sub('^\A\|\|', '' ,file[i])
-            file[i] = re.sub('\^$\Z', '' ,file[i])
-            file[i] = re.sub('^\|' ,'' ,file[i])
+            file[i] = re.sub('\A::1 ', '', file[i])
+            file[i] = re.sub('^\A\|\|', '', file[i])
+            file[i] = re.sub('\^$\Z', '', file[i])
+            file[i] = re.sub('^\|', '', file[i])
             file[i] = re.sub(r'#', ';', file[i])
     with open(filters_regex_one, 'w') as f1:
         f1.writelines(["%s\n" % item  for item in file])
+    print('Host and Adblock filtering Operation Completed!')
     f.close() 
+
+    with open(filters_regex_one) as f:
+        file = f.read().split('\n')
+        for i in range(len(file)):
+            file[i] = re.sub('\Alocal-zone: "', '', file[i])
+            file[i] = re.sub('static\Z', '', file[i])
+            file[i] = re.sub('always_null\Z', '', file[i])
+            file[i] = re.sub('always_nxdomain\Z', '', file[i])
+            file[i] = re.sub('always_refuse\Z', '', file[i])
+            file[i] = re.sub('redirect\Z', '', file[i])
+            file[i] = re.sub('" $', '', file[i])
+    with open(filters_regex_one, 'w') as f1:
+        f1.writelines(["%s\n" % item  for item in file])
+    print('unbound filtering Operation Completed!')
+    f.close() 
+
+    with open(filters_regex_one) as f:
+        file = f.read().split('\n')
+        for i in range(len(file)):
+            file[i] = re.sub('\Aserver=/', '', file[i])
+            file[i] = re.sub('\Aaddress=/', '', file[i])
+            file[i] = re.sub('127\.0\.0\.1\Z', '', file[i])
+            file[i] = re.sub('0\.0\.0\.0\Z', '', file[i])
+            file[i] = re.sub('::\Z', '', file[i])
+            file[i] = re.sub('/\Z', '', file[i])
+            file[i] = re.sub('/$', '', file[i])
+    with open(filters_regex_one, 'w') as f1:
+        f1.writelines(["%s\n" % item  for item in file])
+    print('dnsmasq filtering Operation Completed!')
+    f.close()
 
     remove_words = ['localhost','localhost.localdomain','local','broadcasthost','loopback','ip6-localnet','ip6-mcastprefix','ip6-allnodes','ip6-allrouters','ip6-allhosts','ip6-loopback',' CNAME rpz-passthru.']
     
