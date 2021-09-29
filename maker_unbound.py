@@ -21,7 +21,7 @@ def UNBbuilding(excluded ,incoming,Version):
         f.write('# Description : My Very Personal DNS Blocklist plus crawling from the source\n')
         f.write('# Source : Resources/Source.txt\n')
         f.write('# Rule Counter : ' + str(ankstanop) +' Rules\n')
-        f.write('# Format : Domains\n')
+        f.write('# Format : Unbound\n')
         f.write('# Type : Blocklist\n')
         f.write('# Version : ' + str(Version) +'\n')
         f.write('# Licenses : MIT\n')
