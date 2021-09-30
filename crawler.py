@@ -19,7 +19,7 @@ def download_filters(url,incoming):
     return url
 
 def filtering(filters_welcome):
-    unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:']
+    unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:','-']
     print("filtering . . .")
     with open(filters_welcome, 'r') as f:
         lines = f.read().splitlines()
@@ -28,7 +28,17 @@ def filtering(filters_welcome):
             if not line.startswith((tuple(unwanted))) and line.strip():
                 f.write('\n'.join([line + '\n']))
         print("Simple Filtering Completed!")
-        f.close()
+    f.close()
+    with open(filters_welcome) as f:
+         file = f.read().split('\n')
+         for i in range(len(file)):
+             file[i] = re.sub('/..+\Z', '', file[i])
+             file[i] = re.sub(':(\d\d\d\d\d|\d\d\d\d|\d\d\d|\d\d|\d)', '', file[i])
+             file[i] = re.sub('(\d|\d\d|\d\d\d)\.(\d|\d\d|\d\d\d)\.(\d|\d\d|\d\d\d)\.(\d|\d\d|\d\d\d)\Z', '', file[i])
+    with open(filters_welcome, 'w') as f1:
+         f1.writelines(["%s\n" % item  for item in file])
+    print("Ip Address and Url Path filtering Operation Completed!")
+    f.close()
 
 def filteringcon(filters_regex_one):
     print("filtering . . .")
@@ -39,6 +49,7 @@ def filteringcon(filters_regex_one):
              file[i] = re.sub(' CNAME .$', '', file[i])
              file[i] = re.sub(' CNAME . $', '', file[i])
              file[i] = re.sub('^\*.', '', file[i])
+             file[i] = re.sub('^\*', '', file[i])
              file[i] = re.sub('\s\s+', ' ', file[i])
              file[i] = re.sub('#..*', '', file[i])
              file[i] = re.sub('CNAME . ;..*', '', file[i])
