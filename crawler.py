@@ -18,6 +18,17 @@ def download_filters(url,incoming):
            f.write(data)
     return url
 
+def download_group_filters(multi_url,incoming):
+    for url in multi_url:
+        print("downloading: ",url)
+        
+        get = requests.get(url)
+        if get.status_code == requests.codes.ok:
+            with open(incoming, 'ab') as f:
+                for data in get:
+                    f.write(data)
+        return url
+
 def filtering(filters_welcome):
     unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:','-']
     print("filtering . . .")
