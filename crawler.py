@@ -48,6 +48,7 @@ def IP_URL_FILTERING(filters_welcome):
              file[i] = re.sub('/..+\Z', '', file[i])
              file[i] = re.sub(':(\d\d\d\d\d|\d\d\d\d|\d\d\d|\d\d|\d)', '', file[i])
              file[i] = re.sub('(\d|\d\d|\d\d\d)\.(\d|\d\d|\d\d\d)\.(\d|\d\d|\d\d\d)\.(\d|\d\d|\d\d\d)\Z', '', file[i])
+             file[i] = re.sub('\[..*\]', '', file[i])
     with open(filters_welcome, 'w') as f1:
          f1.writelines(["%s\n" % item  for item in file])
     print("Ip Address and Url Path filtering Operation Completed!")
