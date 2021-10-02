@@ -40,6 +40,7 @@ def filtering(filters_welcome):
                 f.write('\n'.join([line + '\n']))
         print("Simple Filtering Completed!")
     f.close()
+    
 def IP_URL_FILTERING(filters_welcome):
     with open(filters_welcome) as f:
          file = f.read().split('\n')
