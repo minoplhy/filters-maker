@@ -30,7 +30,6 @@ def download_group_filters(multi_url,incoming):
             with open(incoming, 'ab') as f:
                 for data in get:
                     f.write(data)
-    return url
 
 def filtering(filters_welcome):
     unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:','-']
