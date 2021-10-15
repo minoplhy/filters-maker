@@ -1,9 +1,10 @@
 import datetime
 import pytz
 
-
-UTC = pytz.utc
-date = datetime.datetime.now(UTC)
+def BuildDate():
+    UTC = pytz.utc
+    date = datetime.datetime.now(UTC)
+    return date
 
 def linecounter(incoming):
     with open(incoming) as f:
@@ -13,6 +14,7 @@ def linecounter(incoming):
 
 def ABPBlocklist(excluded,incoming,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -36,6 +38,7 @@ def ABPBlocklist(excluded,incoming,output,Version):
 
 def ABPallowlist(incoming,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
     with open(output ,'w') as f:
@@ -57,6 +60,7 @@ def ABPallowlist(incoming,output,Version):
 
 def DNSMASQBlocklist(excluded,incoming,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -82,6 +86,7 @@ def DNSMASQBlocklist(excluded,incoming,output,Version):
 
 def DOMAINBlocklist(excluded ,incoming,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -107,6 +112,7 @@ def DOMAINBlocklist(excluded ,incoming,Version):
 
 def DOMAINAllowlist(incoming, output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
     with open(output ,'w') as f:
@@ -128,6 +134,7 @@ def DOMAINAllowlist(incoming, output,Version):
 
 def HOSTBlocklist(excluded ,incoming ,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -168,6 +175,7 @@ def HOSTBlocklist(excluded ,incoming ,output,Version):
 
 def RPZBlocklist(excluded,incoming,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
@@ -194,6 +202,7 @@ def RPZBlocklist(excluded,incoming,output,Version):
 
 def RPZAllowlist(incoming,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
     with open(output ,'w') as f:
@@ -215,6 +224,7 @@ def RPZAllowlist(incoming,output,Version):
 
 def UNBOUNDBlocklist(excluded,incoming,output,Version):
     ankstanop = linecounter(incoming)
+    date = BuildDate()
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
