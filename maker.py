@@ -36,7 +36,7 @@ def ABPBlocklist(excluded,incoming,output,Version):
                f.write('\n'.join([line + '\n']))
     f.close()
 
-def ABPallowlist(incoming,output,Version):
+def ABPAllowlist(incoming,output,Version):
     ankstanop = linecounter(incoming)
     date = BuildDate()
     with open(incoming ,'r') as f:
