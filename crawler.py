@@ -159,9 +159,7 @@ def excluded(excluded ,incoming):
         for line in lines:
             if line.strip() and not line in exclude:
                f.write('\n'.join([line + '\n']))
-            elif line.startswith((tuple(exline))):
-               f.write('\n'.join([line + '\n']))
-            elif not line.strip():
+            else:
                f.write('\n'.join([line + '\n']))
 
 def blankremover(incoming):
