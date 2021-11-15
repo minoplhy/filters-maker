@@ -32,7 +32,7 @@ def download_group_filters(multi_url,incoming):
                     f.write(data)
 
 def filtering(filters_welcome):
-    unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:','-']
+    unwanted = ['#',';','@','$','  NS',' NS','@@||','!','local-data:','-','  IN']
     print("filtering . . .")
     with open(filters_welcome, 'r') as f:
         lines = f.read().splitlines()
@@ -150,14 +150,14 @@ def killingdup(duplicated_file):
     f.close()
 
 def excluded(excluded ,incoming):
-    exline = [';','$','@','  IN']
+    exline = [';','$','@','  IN','#']
     with open(excluded ,'r') as f:
         exclude = f.read().split()
     with open(incoming ,'r') as f:
         lines = f.read().splitlines() # read lines
     with open(incoming ,'w') as f:
         for line in lines:
-            if line.strip() and not line in exclude and not line.startswith(';'):
+            if line.strip() and not line in exclude:
                f.write('\n'.join([line + '\n']))
             elif line.startswith((tuple(exline))):
                f.write('\n'.join([line + '\n']))
