@@ -33,7 +33,7 @@ inputs:
     description: "Git Branch"
     required: true
   sub_action_location:
-    description: "Sub Action File this extension need to be .py"
+    description: "Sub Action File extension need to be .py"
     required: false
 
 runs:
