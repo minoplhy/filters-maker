@@ -13,7 +13,7 @@ git config --local user.name $INPUT_GIT_NAME
 git config --local user.email $INPUT_GIT_EMAIL
 git add .
 git commit -m "Schedule Building : $TIMEDATE"
-git push -u origin $INPUT_BRANCH_VERSION
+git push -u origin $INPUT_REPO_BRANCH
 if [ -f "/repros/$INPUT_SUB_ACTION_LOCATION" ]; then
     echo $API_TOKEN_GITHUB > token.txt
     gh auth login --with-token < token.txt

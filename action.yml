@@ -32,14 +32,11 @@ inputs:
   REPO_BRANCH:
     description: "Git Branch"
     required: true
-  BRANCH_VERSION:
-    description: "Git Version Branch"
+  sub_action_Repo:
+    description: "Sub Action Repo"
     required: false
   sub_action_location:
-    description: "Action Location Must be in .py"
-    required: false
-  sub_action_Repo:
-    description: "Repo"
+    description: "Sub Action File this extension need to be .py"
     required: false
 
 runs:
@@ -55,6 +52,5 @@ runs:
     - ${{ inputs.GIT_NAME }}
     - ${{ inputs.GIT_EMAIL }}
     - ${{ inputs.REPO_BRANCH }}
-    - ${{ inputs.BRANCH_VERSION }}
-    - ${{ inputs.sub_action_location }}
     - ${{ inputs.sub_action_Repo }}
+    - ${{ inputs.sub_action_location }}
