@@ -36,7 +36,6 @@ runs:
   args:
     - ${{ inputs.Destination_UNAME }}
     - ${{ inputs.Destination_REPO }}
-    - ${{ inputs.Destination_FOLDER }}
     - ${{ inputs.Destination_VERSION }}
     - ${{ inputs.ACTION_FILE }}
     - ${{ inputs.GIT_NAME }}
