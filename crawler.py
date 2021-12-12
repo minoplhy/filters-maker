@@ -82,7 +82,7 @@ def filteringcon(filters_regex_one):
     with open(filters_regex_one) as f:
         file = f.read().split('\n')
         for i in range(len(file)):
-            file[i] = re.sub('(..*#..*)|(@@\|\|..*)|(\|\|..*\/..*)|(^\/..*)|(^..*\$app=..*)|(^..*\$removeparam=..*)|(^..\/..*)|(\$..*)|(^\...*)|(^:..*)|(^\|http)|(^@@..*)|(^_..*)|(\*..*)', '', file[i])
+            file[i] = re.sub('(..*#..*)|(@@\|\|..*)|(\|\|..*\/..*)|(^\/..*)|(^..*\$app=..*)|(^..*\$removeparam=..*)|(^..\/..*)|(\$..*)|(^\...*)|(^:..*)|(^\|http)|(^@@..*)|(^_..*)|(\*..*)|(^\&..*)|(^\-..*)', '', file[i])
             file[i] = re.sub('0\.0\.0\.0 0\.0\.0\.0\Z', '', file[i])
             file[i] = re.sub('\A'+str(IP4)+' ', '', file[i])
             file[i] = re.sub('\A'+str(IP6)+' ', '', file[i])
