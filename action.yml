@@ -1,21 +1,15 @@
-name: "Rani"
-description: "filters filters"
+name: "Filters-maker"
+description: "GitHub Action script for building my blocklist"
 branding:
   icon: 'activity'
   color: 'green'
 
 inputs:
-  Destination_NAME:
-    description: "destination's name of repo"
-    required: true
   Destination_UNAME:
     description: "Destination GitHub Username"
     required: true
   Destination_REPO:
-    description: "Destination GitHub Repo Name"
-    required: true
-  Destination_FOLDER:
-    description: "folder of action"
+    description: "Destination GitHub Repository Name"
     required: true
   Destination_VERSION:
     description: "Version on Destination etc. Pro , ucate , Hell"
@@ -32,29 +26,19 @@ inputs:
   REPO_BRANCH:
     description: "Git Branch"
     required: true
-  BRANCH_VERSION:
-    description: "Git Version Branch"
-    required: false
   sub_action_location:
-    description: "Action Location Must be in .py"
-    required: false
-  sub_action_Repo:
-    description: "Repo"
+    description: "Sub Action File extension need to be .py"
     required: false
 
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.Destination_NAME }}
     - ${{ inputs.Destination_UNAME }}
     - ${{ inputs.Destination_REPO }}
-    - ${{ inputs.Destination_FOLDER }}
     - ${{ inputs.Destination_VERSION }}
     - ${{ inputs.ACTION_FILE }}
     - ${{ inputs.GIT_NAME }}
     - ${{ inputs.GIT_EMAIL }}
     - ${{ inputs.REPO_BRANCH }}
-    - ${{ inputs.BRANCH_VERSION }}
     - ${{ inputs.sub_action_location }}
-    - ${{ inputs.sub_action_Repo }}
