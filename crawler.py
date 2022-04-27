@@ -59,25 +59,6 @@ def IP_URL_FILTERING(filters_welcome):
 
 def filteringcon(filters_regex_one):
     print("filtering . . .")
-    with open(filters_regex_one) as f:
-         file = f.read().split('\n')
-         for i in range(len(file)):
-             file[i] = re.sub('\s\s+#.*', '', file[i])
-             file[i] = re.sub(' CNAME .$', '', file[i])
-             file[i] = re.sub(' CNAME . $', '', file[i])
-             file[i] = re.sub('^\*.', '', file[i])
-             file[i] = re.sub('^\*', '', file[i])
-             file[i] = re.sub('\s\s+', ' ', file[i])
-             file[i] = re.sub('#..*', '', file[i])
-             file[i] = re.sub('CNAME . ;..*', '', file[i])
-             file[i] = re.sub(';..*', '', file[i])
-             file[i] = re.sub('\A^\.', '', file[i])
-             file[i] = re.sub('^\s+|\s+$', '', file[i])
-             file[i] = re.sub(' $', '', file[i])
-    with open(filters_regex_one, 'w') as f1:
-         f1.writelines(["%s\n" % item  for item in file])
-    print("RPZ filtering operation completed!")
-    f.close()
     
     with open(filters_regex_one) as f:
         file = f.read().split('\n')
@@ -99,6 +80,26 @@ def filteringcon(filters_regex_one):
         f1.writelines(["%s\n" % item  for item in file])
     print('Host and Adblock filtering Operation Completed!')
     f.close() 
+
+    with open(filters_regex_one) as f:
+         file = f.read().split('\n')
+         for i in range(len(file)):
+             file[i] = re.sub('\s\s+#.*', '', file[i])
+             file[i] = re.sub(' CNAME .$', '', file[i])
+             file[i] = re.sub(' CNAME . $', '', file[i])
+             file[i] = re.sub('^\*.', '', file[i])
+             file[i] = re.sub('^\*', '', file[i])
+             file[i] = re.sub('\s\s+', ' ', file[i])
+             file[i] = re.sub('#..*', '', file[i])
+             file[i] = re.sub('CNAME . ;..*', '', file[i])
+             file[i] = re.sub(';..*', '', file[i])
+             file[i] = re.sub('\A^\.', '', file[i])
+             file[i] = re.sub('^\s+|\s+$', '', file[i])
+             file[i] = re.sub(' $', '', file[i])
+    with open(filters_regex_one, 'w') as f1:
+         f1.writelines(["%s\n" % item  for item in file])
+    print("RPZ filtering operation completed!")
+    f.close()
 
     with open(filters_regex_one) as f:
         file = f.read().split('\n')
